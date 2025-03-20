@@ -29,25 +29,31 @@ You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you
 
 If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Usage
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### Project Setup
+1. Menyalin .env.example ke .env:
+- cp env.example .env
+2. Install Dependensi PHP menggunakan Composer:
+- composer install
+3. Install Dependensi Frontend menggunakan npm:
+- npm install
+4. Menghasilkan App Key:
+- php artisan key:generate
+5. Mengatur Koneksi Database di .env:
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=3306
+    DB_DATABASE=perpustakaan
+    DB_USERNAME=username_anda
+    DB_PASSWORD=password_anda
+6. Menjalankan Migrasi Database:
+- php artisan migrate
+7. Menjalankan Seeder untuk Mengisi Database dengan Data Dummy:
+- php artisan db:seed
+8. Menjalankan Laravel di Local Development Server:
+- php artisan serve
+Akses aplikasi di browser melalui URL berikut: http://127.0.0.1:8000
 
 ## Contributing
 
