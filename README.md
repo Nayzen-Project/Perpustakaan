@@ -32,28 +32,22 @@ If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Lar
 ## Usage
 
 ### Project Setup
-1. Menyalin .env.example ke .env:
+1. Menyalin .env.example ke .env :
 - cp env.example .env
-2. Install Dependensi PHP menggunakan Composer:
+2. Install Dependensi PHP menggunakan Composer :
 - composer install
-3. Install Dependensi Frontend menggunakan npm:
+3. Install Dependensi Frontend menggunakan npm :
 - npm install
-4. Menghasilkan App Key:
+4. Menghasilkan App Key :
 - php artisan key:generate
-5. Mengatur Koneksi Database di .env:
-    DB_CONNECTION=mysql
-    DB_HOST=127.0.0.1
-    DB_PORT=3306
-    DB_DATABASE=perpustakaan
-    DB_USERNAME=username_anda
-    DB_PASSWORD=password_anda
-6. Menjalankan Migrasi Database:
+5. Mengatur Koneksi Database di .env
+6. Menjalankan Migrasi Database :
 - php artisan migrate
-7. Menjalankan Seeder untuk Mengisi Database dengan Data Dummy:
+7. Menjalankan Seeder untuk Mengisi Database dengan Data Dummy :
 - php artisan db:seed
-8. Menjalankan Laravel di Local Development Server:
+8. Menjalankan Laravel di Local Development Server :
 - php artisan serve
-Akses aplikasi di browser melalui URL berikut: http://127.0.0.1:8000
+Akses aplikasi di browser melalui URL berikut : http://127.0.0.1:8000
 
 ## Contributing
 
