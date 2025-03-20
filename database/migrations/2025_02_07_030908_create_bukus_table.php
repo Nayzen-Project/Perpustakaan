@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
+            $table->string('foto')->nullable();
             $table->string('judul');
+            $table->string('slug')->unique();
             $table->string('penulis');
             $table->string('penerbit');
             $table->text('description')->nullable();

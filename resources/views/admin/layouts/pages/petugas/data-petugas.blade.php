@@ -20,7 +20,6 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-100">
                     <tr>
-                        <th scope="col" class="px-6 py-3">NO</th>
                         <th scope="col" class="px-6 py-3">Photo</th>
                         <th scope="col" class="px-6 py-3">Nama Lengkap</th>
                         <th scope="col" class="px-6 py-3">User Id</th>
@@ -34,7 +33,6 @@
                 <tbody>
                     @forelse($petugas as $p)
                         <tr class="bg-white border-b hover:bg-gray-50">
-                            <td class="px-6 py-4">{{ $p->id }}</td>
                             <td class="px-6 py-4">
                                 <img src="https://api.dicebear.com/9.x/identicon/svg?seed={{ Auth::user()->id }}" alt="Avatar" class="w-10 h-10 rounded-full">
                             </td>
@@ -66,7 +64,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="px-6 py-4 text-center text-gray-500">No members found</td>
+                            <td colspan="8" class="px-6 py-4 text-center text-gray-500">No petugas found</td>
                         </tr>
                     @endforelse
                 </tbody>

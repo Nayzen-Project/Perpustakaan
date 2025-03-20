@@ -1,4 +1,6 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<!-- Choices.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
 @vite('resources/css/app.css','resources/js/app.js')
 <x-app-layout>
     <x-slot name="header">
@@ -9,9 +11,7 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            {{-- <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg"> --}}
-                @yield('content')
-            {{-- </div> --}}
+            @yield('content')
         </div>
     </div>
     {{-- Allert --}}

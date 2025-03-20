@@ -16,47 +16,25 @@ use App\Models\Ulasan;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        $totalpeminjamen = Peminjaman::count();
-        $totaldendas = Denda::count();
         $totalpetugas = Petugas::count();
-        $totalpeminjams = Peminjam::count();
-        $totalusers = User::count();
-        $users = User::all();
-        return view('admin.dashboard',compact('totalusers','totalpeminjams','totalpetugas','totaldendas','totalpeminjamen','users'))->with('title','Dashboard');
+        $totalbukus = Buku::count();
+        // Jumlah buku yang dipinjam (status "dipinjam")
+        $totalDipinjam = Peminjaman::where('status', 'dipinjam')->count();
+
+        // Jumlah buku yang dikembalikan (status "dikembalikan")
+        $totalDikembalikan = Peminjaman::where('status', 'dikembalikan')->count();
+
+        // Jumlah buku yang terlambat (tanggal pengembalian lebih kecil dari sekarang dan statusnya "dipinjam")
+        $totalTerlambat = Peminjaman::where('status', 'dipinjam')
+                                    ->where('tanggal_pengembalian', '<', Carbon::now())
+                                    ->count();
+
+        return view('admin.dashboard', compact('totalDipinjam', 'totalDikembalikan', 'totalTerlambat', 'totalbukus', 'totalpetugas'))->with('title','Dashboard');
     }
-
-    // // Create User
-    // public function store(Request $request)
-    // {
-    //     // Validasi input data
-    //     $validated = $request->validate([
-    //         'name' => 'required|string|max:255',
-    //         'email' => 'required|email|unique:users,email',
-    //         'password' => 'required|string|min:8',
-    //         'role' => 'required|string|in:admin,user,petugas',
-    //     ]);
-
-    //     // Membuat user baru
-    //     $user = User::create([
-    //         'name' => $validated['name'],
-    //         'email' => $validated['email'],
-    //         'password' => Hash::make($validated['password']),
-    //         'role' => $validated['role'],
-    //     ]);
-
-    //     // Redirect setelah user berhasil dibuat
-    //     return redirect()->route('admin.dashboard')->with('success', 'User created successfully');
-    // }
-
-    // public function destroy(User $user)
-    // {
-    //     $user->delete();
-
-    //     return redirect()->route('admin.dashboard')->with('success', 'User deleted successfully');
-    // }
 }

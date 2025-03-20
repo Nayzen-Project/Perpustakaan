@@ -9,13 +9,14 @@ class Peminjam extends Model
     use HasFactory;
 
     protected $fillable = [
-        'email',
         'user_id',
         'nama_lengkap',
         'location',
         'alamat',
         'phone',
         'photo',
+        'status',
+        'nik', 'foto_ktp',
     ];
 
      // Memastikan kolom 'location' diperlakukan sebagai array
@@ -25,14 +26,19 @@ class Peminjam extends Model
     
     public function peminjaman()
     {
-        //  one-to-many (satu peminjam bisa memiliki banyak peminjaman)
-        return $this->hasMany(Peminjaman::class);
+        return $this->hasMany(Peminjaman::class, 'peminjam_id');
     }
 
     protected $table = 'peminjams';
 
     public function user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class); // Hubungkan kembali ke user
     }
+
+    public function koleksiBukus()
+    {
+        return $this->hasMany(KoleksiBuku::class, 'peminjam_id');
+    }
+
 }

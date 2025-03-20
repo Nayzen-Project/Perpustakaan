@@ -17,7 +17,6 @@ return new class extends Migration
             $table->softDeletes();
             $table->foreignId('peminjam_id')->constrained('peminjams')->onDelete('cascade');
             $table->foreignId('buku_id')->constrained('bukus')->onDelete('cascade');
-            $table->integer('rating');
             $table->text('ulasan')->nullable();
         });
     }

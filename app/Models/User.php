@@ -21,6 +21,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role',
+        'is_confirmed',
     ];
 
     /**
@@ -50,4 +51,20 @@ class User extends Authenticatable
     {
         return $this->hasOne(Petugas::class, 'user_id', 'id');
     }
+
+    public function peminjam()
+    {
+        return $this->hasOne(Peminjam::class, 'user_id');
+    }
+
+    public function koleksiBukus()
+    {
+        return $this->hasMany(KoleksiBuku::class, 'user_id');
+    }
+
+    public function denda()
+    {
+        return $this->hasManyThrough(Denda::class, Peminjaman::class);
+    }
+
 }

@@ -6,7 +6,9 @@
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
                     <a href="{{ route('admin.dashboard') }}">
-                        <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="30pt" height="30pt">
+                            <path d="M11.25 4.533A9.707 9.707 0 0 0 6 3a9.735 9.735 0 0 0-3.25.555.75.75 0 0 0-.5.707v14.25a.75.75 0 0 0 1 .707A8.237 8.237 0 0 1 6 18.75c1.995 0 3.823.707 5.25 1.886V4.533ZM12.75 20.636A8.214 8.214 0 0 1 18 18.75c.966 0 1.89.166 2.75.47a.75.75 0 0 0 1-.708V4.262a.75.75 0 0 0-.5-.707A9.735 9.735 0 0 0 18 3a9.707 9.707 0 0 0-5.25 1.533v16.103Z" />
+                        </svg> 
                     </a>
                 </div>
 
@@ -17,10 +19,10 @@
                     </x-nav-link>
                 </div>
 
-                 <!-- Navigation Links -->
-                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('admin.peminjam')" :active="request()->routeIs('admin.peminjam')">
-                        {{ __('Peminjam') }}
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.user')" :active="request()->routeIs('admin.user')">
+                        {{ __('User') }}
                     </x-nav-link>
                 </div>
 
@@ -33,56 +35,17 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link>
+                    <x-nav-link :href="route('admin.buku')" :active="request()->routeIs('admin.buku')">
                         {{ __('Buku') }}
                     </x-nav-link>
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link>
-                        {{ __('Peminjaman') }}
+                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                    <x-nav-link :href="route('admin.kategori')" :active="request()->routeIs('admin.kategori')">
+                        {{ __('Kategori') }}
                     </x-nav-link>
                 </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link>
-                        {{ __('Ulasan') }}
-                    </x-nav-link>
-                </div>
-
-                <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link>
-                        {{ __('Denda') }}
-                    </x-nav-link>
-                </div>
-
-                 {{-- <!-- Anggota Dropdown -->
-                 <div class="hidden space-x-8 sm:flex sm:ms-10 items-center">
-                    <x-dropdown align="right" width="48">
-                        <x-slot name="trigger">
-                            <button class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150">
-                                {{ __('Anggota') }}
-                                <div class="ms-1">
-                                    <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </button>
-                        </x-slot>
-
-                        <x-slot name="content">
-                            <x-dropdown-link :href="route('admin.peminjam')" :active="request()->routeIs('admin.peminjam')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                {{ __('Peminjam') }}
-                            </x-dropdown-link>
-                            <x-dropdown-link :href="route('admin.petugas')" :active="request()->routeIs('admin.petugas')" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                {{ __('Petugas') }}
-                            </x-dropdown-link>
-                        </x-slot>
-                    </x-dropdown>
-                </div> --}}
             </div>
 
             <!-- Settings Dropdown -->

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->softDeletes();
             $table->foreignId('peminjaman_id')->constrained('peminjamen')->onDelete('cascade');
             $table->integer('nominal');
-            $table->integer('dibayar');
-            $table->enum('status', ['lunas', 'belum lunas']);
+            $table->boolean('dibayar')->default(false);
+            $table->enum('status', ['dibayar', 'belum dibayar'])->default('belum dibayar'); ;
         });
     }
 

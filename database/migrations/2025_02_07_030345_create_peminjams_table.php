@@ -15,13 +15,15 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->softDeletes();
-            $table->string('email')->unique();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->string('nama_lengkap');
             $table->json('location'); // Menyimpan provinsi, kabupaten, kecamatan dalam format JSON
             $table->string('alamat');
             $table->string('phone');
             $table->string('photo')->nullable();
+            $table->enum('status', ['active', 'nonactive'])->default('active');
+            $table->string('nik')->nullable()->unique();
+            $table->string('foto_ktp')->nullable();
         });
     }
 

@@ -25,23 +25,32 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request): RedirectResponse
     {
         $request->authenticate();
-
         $request->session()->regenerate();
 
-        // Cek role pengguna
         $user = Auth::user();
 
+        // Cek apakah user belum dikonfirmasi
+        if ($user->role === 'user' && !$user->is_confirmed) {
+            Auth::logout();
+            return redirect()->route('login')->with('status', 'Akun Anda sedang dalam proses konfirmasi. Silakan tunggu persetujuan admin.');
+        }
+
+        // Jika user adalah peminjam, cek statusnya
+        if ($user->role === 'user' && $user->peminjam && $user->peminjam->status !== 'active') {
+            Auth::logout();
+            return redirect()->route('login')->with('status', 'Akun Anda telah dinonaktifkan. Silakan hubungi petugas.');
+        }
+
+        // Arahkan sesuai role
         if ($user->role === 'admin') {
             return redirect()->intended(route('admin.dashboard'));
         } elseif ($user->role === 'user') {
             return redirect()->intended(route('user.dashboard'));
         } elseif ($user->role === 'petugas') {
             return redirect()->intended(route('petugas.dashboard'));
-        } else {
-            return redirect()->intended(route('login'));
         }
 
-        // return redirect()->intended(route('dashboard', absolute: false));
+        return redirect()->route('login');
     }
 
     /**

@@ -13,7 +13,6 @@ class PetugasController extends Controller
 {
     public function index()
     {
-        // $petugas = Petugas::with('user')->paginate(10);
         $petugas = Petugas::with('user')->get();
         return view('admin.layouts.pages.petugas.data-petugas', compact('petugas'))->with('title', 'PETUGAS');
     }
@@ -28,7 +27,6 @@ class PetugasController extends Controller
             'nama_lengkap' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'alamat' => 'required|string',
-            'photo' => 'nullable|image|max:2048',
         ]);
 
         // Buat User
@@ -39,12 +37,6 @@ class PetugasController extends Controller
             'role' => $request->role, // Simpan role sesuai pilihan
         ]);
 
-        // Upload Foto jika ada
-        $photoPath = null;
-        if ($request->hasFile('photo')) {
-            $photoPath = $request->file('photo')->store('photos', 'public');
-        }
-
         // Buat Petugas/Admin dengan role yang dipilih
         Petugas::create([
             'user_id' => $user->id,
@@ -53,7 +45,6 @@ class PetugasController extends Controller
             'nama_lengkap' => $request->nama_lengkap,
             'phone' => $request->phone,
             'alamat' => $request->alamat,
-            'photo' => $photoPath,
         ]);
 
         return redirect()->back()->with('success', 'Petugas/Admin berhasil ditambahkan');
@@ -68,7 +59,6 @@ class PetugasController extends Controller
             'nama_lengkap' => 'required|string|max:255',
             'phone' => 'required|string|max:15',
             'alamat' => 'required|string',
-            'photo' => 'nullable|image|max:2048',
         ]);
 
         $user = User::findOrFail($petugas->user_id);
@@ -79,22 +69,12 @@ class PetugasController extends Controller
             'role' => $request->role,
         ]);
 
-        if ($request->hasFile('photo')) {
-            if ($petugas->photo) {
-                Storage::disk('public')->delete($petugas->photo);
-            }
-            $photoPath = $request->file('photo')->store('photos', 'public');
-        } else {
-            $photoPath = $petugas->photo;
-        }
-
         $petugas->update([
             'email' => $user->email,
             'role' => $user->role,
             'nama_lengkap' => $request->nama_lengkap,
             'phone' => $request->phone,
             'alamat' => $request->alamat,
-            'photo' => $photoPath,
         ]);
 
         return redirect()->back()->with('success', 'Data Petugas/Admin berhasil diperbarui');

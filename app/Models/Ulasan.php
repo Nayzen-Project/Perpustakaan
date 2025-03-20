@@ -16,15 +16,14 @@ class Ulasan extends Model
         'ulasan',
     ];
 
-    // many-to-one (Setiap ulasan diberikan untuk satu buku dan berasal dari satu peminjaman)
+    public function peminjam()
+    {
+        return $this->belongsTo(Peminjam::class);
+    }
+
     public function buku()
     {
         return $this->belongsTo(Buku::class);
-    }
-
-    public function peminjaman()
-    {
-        return $this->belongsTo(Peminjaman::class);
     }
 
 }

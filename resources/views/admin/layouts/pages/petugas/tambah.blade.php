@@ -2,8 +2,8 @@
 <div id="petugas-modal" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-40">
     <div class="relative w-full max-w-md bg-white rounded-lg shadow-lg">
         <!-- Modal Header -->
-        <div class="flex justify-between items-center p-4 bg-white border-b rounded-t-lg">
-            <h3 class="text-lg font-semibold text-gray-800">
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900">
                 Add New Petugas
             </h3>
             <button type="button" class="text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg p-2" data-modal-toggle="petugas-modal" aria-label="Close modal">
@@ -14,7 +14,7 @@
         </div>
 
         <!-- Modal Body -->
-        <form action="{{ route('admin.petugas.store') }}" method="POST" enctype="multipart/form-data" class="space-y-4 p-4">
+        <form action="{{ route('admin.petugas.store') }}" method="POST" enctype="multipart/form-data" class="p-4 space-y-4 max-h-[80vh] overflow-y-auto">
             @csrf
             <!-- Name -->
             <div>
@@ -62,12 +62,6 @@
                 <input type="number" name="phone" id="phone" pattern="^\d{10,15}$" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2" placeholder="Enter phone number" required>
             </div>
 
-            <!-- Photo -->
-            <div>
-                <label for="photo" class="block text-sm font-medium text-gray-700">Photo</label>
-                <input type="file" name="photo" id="photo" accept="image/*" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 w-full p-2">
-            </div>
-
             <!-- Submit Button -->
             <div class="flex justify-end">
                 <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300">
@@ -75,5 +69,6 @@
                 </button>
             </div>
         </form>
+    </div>
     </div>
 </div>

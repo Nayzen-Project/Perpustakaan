@@ -10,18 +10,17 @@ class KoleksiBuku extends Model
     use HasFactory;
 
     protected $fillable = [
-        'peminjaman_id',
+        'user_id',
         'buku_id',
     ];
 
-    // satu peminjam bisa menyimpan banyak buku dalam koleksinya
-    public function peminjam()
+    public function user()
     {
-        return $this->belongsTo(Peminjam::class);
+        return $this->belongsTo(User::class);
     }
 
     public function buku()
     {
-        return $this->belongsTo(Buku::class);
+        return $this->belongsTo(Buku::class, 'buku_id');
     }
 }

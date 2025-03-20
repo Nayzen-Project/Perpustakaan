@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('nama_lengkap');
             $table->string('phone');
             $table->string('alamat');
-            $table->string('photo')->nullable();
             $table->enum('role', ['petugas', 'admin']);
         });
     }

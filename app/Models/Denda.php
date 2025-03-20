@@ -18,8 +18,12 @@ class Denda extends Model
 
     public function peminjaman()
     {
-        // one-to-one (Setiap denda hanya terkait dengan satu peminjaman)
         return $this->belongsTo(Peminjaman::class);
+    }
+
+    public function peminjam()
+    {
+        return $this->peminjaman ? $this->peminjaman->peminjam() : null;
     }
 
 }

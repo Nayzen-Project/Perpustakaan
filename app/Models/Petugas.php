@@ -15,7 +15,6 @@ class Petugas extends Model
         'nama_lengkap',
         'phone',
         'alamat',
-        'photo',
         'role',
     ];
 

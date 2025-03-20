@@ -13,15 +13,17 @@ return new class extends Migration
     {
         Schema::create('peminjamen', function (Blueprint $table) {
             $table->id();
+            $table->string('kode_peminjaman')->unique(); // Kode unik untuk peminjaman
             $table->timestamps();
             $table->softDeletes();
             $table->foreignId('peminjam_id')->constrained('peminjams')->onDelete('cascade');
-            $table->foreignId('petugas_id')->constrained('petugas')->onDelete('cascade');
-            $table->date('tanggal_dikembalikan');
-            $table->date('tanggal_pengembalian');
-            $table->date('tanggal_peminjaman');
-            $table->enum('status', ['dipinjam', 'dikembalikan'])->default('dipinjam');
-        });
+            $table->foreignId('petugas_id')->nullable()->constrained('petugas')->onDelete('cascade');
+            $table->date('tanggal_dikembalikan')->nullable(); // Bisa null jika belum dikembalikan
+            $table->date('tanggal_pengembalian'); // Tanggal yang diharapkan dikembalikan
+            $table->date('tanggal_peminjaman'); // Tanggal buku dipinjam
+            $table->enum('status', ['dipinjam', 'dikembalikan', 'menunggu pengambilan', 'telat dikembalikan'])
+                  ->default('menunggu pengambilan');
+        });        
     }
 
     /**

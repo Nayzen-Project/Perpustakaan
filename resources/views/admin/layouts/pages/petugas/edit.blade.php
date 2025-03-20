@@ -1,9 +1,9 @@
 <!-- Modal Edit Petugas -->
 @foreach ($petugas as $p)
-<div id="edit-modal-{{ $p->id }}" tabindex="-1" aria-hidden="true" class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-40">
+<div id="edit-modal-{{ $p->id }}" tabindex="-1" aria-hidden="true"class="hidden fixed inset-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-40">
     <div class="relative w-full max-w-md bg-white rounded-lg shadow-lg">
-            <!-- Modal Header -->
-            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
+        <!-- Modal Header -->
+        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t border-gray-200">
                 <h3 class="text-lg font-semibold text-gray-900">
                     Edit Petugas
                 </h3>
@@ -50,11 +50,6 @@
                 <div>
                     <label for="alamat" class="block text-sm font-medium text-gray-700">Alamat</label>
                     <textarea name="alamat" id="alamat" rows="3" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2" required>{{ old('alamat', $p->alamat) }}</textarea>
-                </div>
-                <!-- Photo -->
-                <div>
-                    <label for="photo" class="block text-sm font-medium text-gray-700">Photo</label>
-                    <input type="file" name="photo" id="photo" accept="image/*" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2">
                 </div>
                 <!-- Submit Button -->
                 <div class="flex justify-end">

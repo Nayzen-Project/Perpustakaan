@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->enum('role',['user','petugas','admin'])->default('user');
+            $table->boolean('is_confirmed')->default(false);
             $table->timestamps();
         });
 
